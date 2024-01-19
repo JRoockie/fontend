@@ -1,0 +1,128 @@
+
+
+.Songs{
+  position: relative;
+  z-index: 9999;
+  max-height: 100vh;
+  padding: 0 10px;
+
+
+  .headerBlock{
+    margin-top: 50px;
+    .backButton{
+      cursor: pointer;
+      margin-right: 50px;
+      img{
+        transition: 0.5s ease-in-out all;
+        &:hover{
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .header{
+      font-family: 'ActayWide-Bold', sans-serif;
+      font-size: 40px;
+      color: #FDFDFD;
+      span{
+        background: linear-gradient(260deg, #EE1185 0%, #5A52A5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  .Main{
+    margin-top: 60px;
+    max-height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    .block{
+      border-radius: 10px;
+      background: rgba(71, 56, 73, 0.30);
+      box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.10);
+      backdrop-filter: blur(35px);
+      margin-bottom: 30px;
+      padding: 40px 60px;
+      &:before{
+        transition: 0.5s ease-in-out all;
+        content: ' ';
+        z-index: -1;
+        border-radius: 0 0 19px 19px;
+        background: rgba(71, 56, 73, 0.20);
+        backdrop-filter: blur(15px);
+        bottom: -15px;
+        left: 5%;
+        width: 90%;
+        height: 15px;
+        position: absolute;
+        display: block;
+      }
+      span{
+        font-family: 'ActayWide-Regular', sans-serif;
+        color: #F2F2F2;
+        font-size: 25px;
+        letter-spacing: 1px;
+        opacity: 0.5;
+        margin-right: 10px;
+      }
+      color: #F2F2F2;
+      font-size: 25px;
+      font-family: 'ActayWide-Regular', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .songInfoBlock{
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+        .linkYoutube{
+          text-decoration: none;
+          &:hover{
+
+          }
+        }
+    }
+
+    .buttonsBlock{
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      .songsNum{
+        text-align: center;
+        background: linear-gradient(260deg, rgba(238, 17, 133, 1) 0%, rgba(90, 82, 165, 1) 100%) !important;
+        backdrop-filter: blur(50px) !important;
+        &:before{
+          background: linear-gradient(260deg, rgba(238, 17, 133, 0.50) 0%, rgba(90, 82, 165, 0.50) 100%) !important;
+          backdrop-filter: blur(2px);
+        }
+      }
+      .downloadBtn{
+        text-align: center;
+
+      }
+      .nextBtn, .prevBtn{
+        height: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .nextBtn{
+        img{
+          transform: rotate(-180deg);
+          margin-bottom: 10px;
+        }
+      }
+      .prevBtn{
+        img{
+          margin-top: 10px;
+        }
+      }
+    }
+
+  }
+}

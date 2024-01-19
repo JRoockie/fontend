@@ -1,0 +1,120 @@
+
+.applications {
+  max-width: 1096px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 9999;
+  justify-content: space-around;
+  padding: 100px 10px;
+
+  .Embed {
+    display: flex;
+    text-decoration: none;
+    position: relative;
+    width: 45%;
+    height: 300px;
+    border-radius: 30px;
+    background: rgba(71, 56, 73, 0.30);
+    cursor: pointer;
+    transition: 0.5s ease-in-out all;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.10);
+
+    &:hover{
+      &:before{
+        background: linear-gradient(260deg, rgba(238, 17, 133, 0.20) 0%, rgba(90, 82, 165, 0.20) 100%);
+        backdrop-filter: blur(2px);
+      }
+    }
+    &:before{
+      transition: 0.5s ease-in-out all;
+      content: ' ';
+      z-index: -1;
+      border-radius: 0 0 19px 19px;
+      background: rgba(71, 56, 73, 0.30);
+      backdrop-filter: blur(2px);
+      bottom: -15px;
+      left: 5%;
+      width: 90%;
+      height: 15px;
+      position: absolute;
+      display: block;
+    }
+
+    &:hover{
+      transition: 0.5s ease-in-out all;
+      background-color: unset;
+      .num{
+        transition: 0.5s ease-in-out all;
+        color: white;
+        background: linear-gradient(260deg, #EE1185 0%, #5A52A5 100%);
+      }
+
+      img{
+        opacity: 1;
+      }
+    }
+
+
+    .num {
+      transition: 0.5s ease-in-out all;
+      position: absolute;
+      left: 50%;
+      top: -30px;
+      transform: translateX(-30px);
+      color: black;
+      font-size: 30px;
+      line-height: 30px;
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Raleway-Regular', sans-serif;
+    }
+    .header{
+      font-family: 'ActayWide-Bold', sans-serif;
+      font-size: 30px;
+      color: white;
+      text-align: center;
+    }
+    .prg{
+      font-family: 'ActayWide-Regular', sans-serif;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    img {
+      transition: 0.5s ease-in-out all;
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .logOutLink{
+    margin-top: 50px;
+    width: 90%;
+    display: block;
+    padding: 40px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgba(253, 253, 253, 0.50);
+    font-family: 'ActayWide-Bold', sans-serif;
+    font-size: 20px;
+    border-radius: 30px;
+    background: rgba(71, 56, 73, 0.30);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(35px);
+    transition: 0.5s ease-in-out all;
+    &:hover{
+      color: white;
+    }
+  }
+}
