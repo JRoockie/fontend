@@ -1,19 +1,93 @@
-
+@import "../../source/styles/mixin.scss";
 
 .Songs{
   position: relative;
   z-index: 9999;
+
   max-height: 100vh;
   padding: 0 10px;
+  .DialogBlock{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    @include screen($tablet-m){
+      flex-direction: column;
+    }
+
+    .backClickBlock{
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      left: 0;
+      top: 0;
+      z-index: 9998;
+    }
+
+    .button{
+      position: relative;
+      z-index: 9999;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 36px;
+      border-radius: 20px;
+      width: 280px;
+      height: 280px;
+      transition: 0.5s ease-in-out;
+      background: linear-gradient(260deg, rgba(238, 17, 133, 1) 0%, rgba(90, 82, 165, 1) 100%);
+
+      @include screen($tablet-l){
+        height: 200px;
+        width: 200px;
+        img{
+          width: 40%;
+        }
+      }
+      @include screen($tablet-m){
+        margin: 20px;
+      }
+      &:hover{
+        scale: 1.1;
+      }
+
+      &:before{
+        background: linear-gradient(260deg, rgba(238, 17, 133, 0.50) 0%, rgba(90, 82, 165, 0.50) 100%) !important;
+        backdrop-filter: blur(2px);
+        height: 12px;
+        bottom: -12px;
+        width: 80%;
+        left: 10%;
+      }
+
+    }
+
+  }
 
 
   .headerBlock{
     margin-top: 50px;
+    @include screen(1500px){
+      margin-top: 20px;
+    }
     .backButton{
       cursor: pointer;
       margin-right: 50px;
+      @include screen($tablet-l){
+        margin-right: 30px;
+      }
       img{
         transition: 0.5s ease-in-out all;
+        @include screen($tablet){
+          width: 80px;
+        }
+
         &:hover{
           transform: scale(1.1);
         }
@@ -24,6 +98,17 @@
       font-family: 'ActayWide-Bold', sans-serif;
       font-size: 40px;
       color: #FDFDFD;
+      @include screen($tablet-l){
+        font-size: 32px;
+      }
+      @include screen($tablet){
+        font-size: 26px;
+      }
+      @include screen($mobile-m){
+        font-size: 20px;
+        text-align: center;
+      }
+
       span{
         background: linear-gradient(260deg, #EE1185 0%, #5A52A5 100%);
         -webkit-background-clip: text;
@@ -39,6 +124,12 @@
     display: flex;
     justify-content: space-between;
     align-items: start;
+    @include screen($tablet-l){
+      margin-top: 30px;
+    }
+    @include screen($tablet){
+      flex-direction: column;
+    }
 
     .block{
       border-radius: 10px;
@@ -47,6 +138,18 @@
       backdrop-filter: blur(35px);
       margin-bottom: 30px;
       padding: 40px 60px;
+      @include screen($wide-l){
+        padding: 30px 40px;
+        margin-bottom: 20px;
+        &:before{
+          height: 10px !important;
+          bottom: -10px !important;
+        }
+      }
+      @include screen($tablet){
+        padding: 15px 30px;
+      }
+
       &:before{
         transition: 0.5s ease-in-out all;
         content: ' ';
@@ -68,18 +171,39 @@
         letter-spacing: 1px;
         opacity: 0.5;
         margin-right: 10px;
+        @include screen($wide-l){
+          font-size: 20px;
+        }
+        @include screen($tablet){
+          font-size: 16px;
+        }
+
+
       }
       color: #F2F2F2;
       font-size: 25px;
       font-family: 'ActayWide-Regular', sans-serif;
       letter-spacing: 1px;
+      @include screen($wide-l){
+        font-size: 20px;
+      }
+      @include screen($tablet){
+        font-size: 16px;
+      }
+
+
     }
 
     .songInfoBlock{
       width: 50%;
       display: flex;
       flex-direction: column;
-        .linkYoutube{
+      @include screen($tablet){
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .linkYoutube{
           text-decoration: none;
           &:hover{
 
@@ -91,10 +215,27 @@
       width: 40%;
       display: flex;
       flex-direction: column;
+      @include screen($tablet-l){
+        width: 46%;
+      }
+      @include screen($tablet){
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row-reverse !important;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
       .songsNum{
         text-align: center;
         background: linear-gradient(260deg, rgba(238, 17, 133, 1) 0%, rgba(90, 82, 165, 1) 100%) !important;
         backdrop-filter: blur(50px) !important;
+        @include screen($tablet){
+          margin-top: 20px;
+          width: 100%;
+        }
+
         &:before{
           background: linear-gradient(260deg, rgba(238, 17, 133, 0.50) 0%, rgba(90, 82, 165, 0.50) 100%) !important;
           backdrop-filter: blur(2px);
@@ -102,6 +243,10 @@
       }
       .downloadBtn{
         text-align: center;
+        @include screen($tablet){
+          width: 100%;
+        }
+
 
       }
       .nextBtn, .prevBtn{
@@ -110,6 +255,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        @include screen($wide-l){
+          img{
+            width: 40px;
+          }
+        }
+        @include screen($tablet){
+          width: 46%;
+          height: 60px;
+          img{
+            width: 30px;
+            margin: 0 !important;
+          }
+        }
+
+
       }
       .nextBtn{
         img{

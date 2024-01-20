@@ -1,4 +1,4 @@
-
+@import "../../source/styles/mixin.scss";
 
 .OrdersList{
   position: relative;
@@ -6,12 +6,26 @@
   max-height: 100vh;
   padding: 0 10px;
   .headerBlock{
-    margin-top: 50px;
+    margin-top: 40px;
+
     .backButton{
       cursor: pointer;
       margin-right: 50px;
+      @include screen($tablet-l){
+        margin-right: 30px;
+      }
+      @include screen($tablet-m){
+        margin-right: 10px;
+      }
+
       img{
         transition: 0.5s ease-in-out all;
+        @include screen($tablet){
+          width: 80px;
+        }
+        @include screen($tablet-m){
+          width: 60px;
+        }
         &:hover{
           transform: scale(1.1);
         }
@@ -22,6 +36,19 @@
       font-family: 'ActayWide-Bold', sans-serif;
       font-size: 40px;
       color: #FDFDFD;
+      @include screen($tablet-l){
+        font-size: 32px;
+      }
+      @include screen($tablet){
+        font-size: 26px;
+      }
+      @include screen($tablet-m){
+        font-size: 20px;
+      }
+      @include screen($mobile-m){
+        text-align: center;
+      }
+
       span{
         background: linear-gradient(260deg, #EE1185 0%, #5A52A5 100%);
         -webkit-background-clip: text;
@@ -30,8 +57,8 @@
     }
   }
   .main{
-    margin-top: 60px;
-    max-height: 80vh;
+    margin-top: 40px;
+    max-height: 90vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -39,8 +66,22 @@
 
     .listBlock{
       width: 40%;
-      max-height: 80vh;
+      max-height: 85vh;
       overflow: scroll;
+      @include screen($wide-l){
+        width: 45%;
+        max-height: 80vh;
+      }
+      @include screen($wide-m){
+        max-height: 70vh;
+      }
+      @include screen($tablet-l){
+        margin: 0 auto;
+        width: 60%;
+      }
+      @include screen($tablet){
+        width: 100%;
+      }
       &::-webkit-scrollbar { /* chrome based */
         width: 0;  /* ширина scrollbar'a */
         background: transparent;  /* опционально */
@@ -76,6 +117,10 @@
         backdrop-filter: blur(35px);
         position: relative;
         transition: 0.5s ease-in-out all;
+        @include screen($wide-l){
+          padding: 25px 0;
+        }
+
 
         &:hover{
           background: linear-gradient(260deg, rgba(238, 17, 133, 1) 0%, rgba(90, 82, 165, 1) 100%);
@@ -135,6 +180,14 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      @include screen($tablet-l){
+        margin: 0 auto;
+        width: 70%;
+      }
+      @include screen($tablet){
+        width: 100%;
+      }
+
 
       .block{
         border-radius: 10px;
@@ -142,8 +195,20 @@
         box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.10);
         backdrop-filter: blur(35px);
         margin-bottom: 25px;
-        padding: 36px 0;
+        padding: 30px 0;
         text-align: center;
+        @include screen(1700px){
+            padding: 20px 0;
+          margin-bottom: 18px;
+        }
+        @include screen($wide-l){
+          margin-bottom: 15px;
+          padding: 15px 0;
+        }
+        @include screen($tablet-m){
+          padding: 10px 0;
+        }
+
         &:before{
           transition: 0.5s ease-in-out all;
           content: ' ';
@@ -157,6 +222,18 @@
           height: 15px;
           position: absolute;
           display: block;
+          @include screen(1700px){
+            height: 10px;
+            width: 80%;
+            left: 10%;
+            bottom: -10px;
+          }
+          @include screen($wide-l){
+            height: 6px;
+            bottom: -6px;
+          }
+
+
         }
         span{
           font-family: 'ActayWide-Regular', sans-serif;
@@ -165,22 +242,50 @@
           letter-spacing: 1px;
           opacity: 0.5;
           margin-right: 10px;
+          @include screen($wide-l){
+            font-size: 16px;
+          }
+          @include screen($tablet-m){
+            font-size: 14px;
+          }
+
+
         }
         color: #F2F2F2;
         font-size: 25px;
         font-family: 'ActayWide-Regular', sans-serif;
         letter-spacing: 1px;
+        @include screen($wide-l){
+          font-size: 18px;
+        }
+        @include screen($tablet-m){
+          font-size: 15px;
+        }
+
+
       }
       .nameText{
         text-align: start;
         padding: 32px 24px;
         width: 100%;
+        @include screen($wide-l){
+          padding: 20px 15px;
+        }
+
         .name{
           font-size: 25px;
           font-family: 'ActayWide-Bold', sans-serif;
           letter-spacing: 1px;
           color: #F2F2F2;
           margin-bottom: 16px;
+          @include screen($wide-l){
+            font-size: 20px;
+          }
+          @include screen($tablet-m){
+            font-size: 16px;
+          }
+
+
         }
         .prg{
           font-size: 16px;
@@ -189,6 +294,14 @@
           font-family: 'ActayWide-Regular', sans-serif;
           letter-spacing: 0.65px;
           height: 80px;
+          @include screen($wide-l){
+            font-size: 14px;
+          }
+          @include screen($tablet-m){
+            font-size: 12px;
+          }
+
+
         }
       }
       .data{
@@ -224,6 +337,21 @@
         width: 48%;
         border-radius: 10px;
         background: linear-gradient(260deg, rgba(238, 17, 133, 1) 0%, rgba(90, 82, 165, 1) 100%);
+        @include screen(1700px){
+          padding: 20px 0;
+        }
+        @include screen($wide-l){
+          font-size: 16px;
+          padding: 15px 0;
+        }
+        @include screen($tablet-m){
+          font-size: 14px;
+          padding: 10px 0;
+        }
+
+
+
+
       }
 
     }

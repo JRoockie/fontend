@@ -1,4 +1,4 @@
-
+@import "../../source/styles/mixin.scss";
 .applications {
   max-width: 1096px;
   margin: 0 auto;
@@ -6,6 +6,12 @@
   z-index: 9999;
   justify-content: space-around;
   padding: 100px 10px;
+  @include screen($wide){
+    padding: 50px 10px;
+  }
+  @include screen($tablet){
+    flex-wrap: wrap;
+  }
 
   .Embed {
     display: flex;
@@ -18,6 +24,26 @@
     cursor: pointer;
     transition: 0.5s ease-in-out all;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.10);
+    @include screen($tablet-w){
+      height: 250px;
+    }
+    @include screen($tablet-l){
+      &::before{
+        width: 80% !important;
+        left: 10% !important;
+      }
+    }
+    @include screen($tablet){
+      width: 90%;
+      margin-bottom: 40px;
+      height: 200px;
+    }
+    @include screen($mobile-m){
+      width: 100%;
+      height: 160px;
+    }
+
+
 
     &:hover{
       &:before{
@@ -60,7 +86,7 @@
       position: absolute;
       left: 50%;
       top: -30px;
-      transform: translateX(-30px);
+      transform: translateX(-50%);
       color: black;
       font-size: 30px;
       line-height: 30px;
@@ -72,12 +98,22 @@
       justify-content: center;
       align-items: center;
       font-family: 'Raleway-Regular', sans-serif;
+      @include screen($tablet-w){
+        font-size: 24px;
+        height: 40px;
+        width: 40px;
+        top: -20px;
+      }
+
     }
     .header{
       font-family: 'ActayWide-Bold', sans-serif;
       font-size: 30px;
       color: white;
       text-align: center;
+      @include screen($tablet-w){
+        font-size: 24px;
+      }
     }
     .prg{
       font-family: 'ActayWide-Regular', sans-serif;
@@ -113,6 +149,27 @@
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.10);
     backdrop-filter: blur(35px);
     transition: 0.5s ease-in-out all;
+    @include screen($tablet-w){
+      padding: 30px;
+      font-size: 16px;
+    }
+    @include screen($tablet-l){
+      &::before{
+        width: 80%;
+        left: 10%;
+      }
+    }
+    @include screen($tablet){
+      margin-top: 0;
+    }
+    @include screen($mobile-m){
+      width: 100%;
+      padding: 20px 0;
+    }
+
+
+
+
     &:hover{
       color: white;
     }

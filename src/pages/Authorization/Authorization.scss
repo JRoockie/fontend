@@ -1,3 +1,4 @@
+@import "../../source/styles/mixin.scss";
 .Authorization {
   position: relative;
   z-index: 1000;
@@ -6,8 +7,15 @@
     color: #FDFDFD;
     font-family: 'ActayWide-Bold', sans-serif;
     font-size: 40px;
-    margin-top: 200px;
+    margin-top: 15vh;
     margin-bottom: 50px;
+    @include screen($wide-l){
+      margin-bottom: 20px;
+    }
+    @include screen($wide){
+      font-size: 28px;
+    }
+
   }
 
 
@@ -15,6 +23,10 @@
     position: relative;
     border-bottom: 2px solid white;
     margin-top: 60px;
+    @include screen($wide-l){
+      margin-top: 40px;
+    }
+
 
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
@@ -24,9 +36,6 @@
       -webkit-text-fill-color: #fff !important;
     }
     .input {
-
-
-
       font-size: 20px;
       color: white;
       font-family: 'Raleway-Medium', sans-serif;
@@ -35,6 +44,17 @@
       background-color: transparent;
       position: relative;
       padding: 4px 15px;
+      @include screen($wide){
+        font-size: 16px;
+      }
+      @include screen($wide){
+        width: 300px;
+      }
+      @include screen($mobile-m){
+        width: 250px;
+      }
+
+
 
       &:focus-visible {
         outline: none;
@@ -45,17 +65,33 @@
       position: relative;
       height: 38px;
       margin-right: 20px;
+      @include screen($wide){
+        height: 30px;
+      }
+
 
       .img {
         position: absolute;
         top: 0;
         left: -14px;
+        @include screen($wide){
+          height: 40px;
+          left: -10px;
+          top: 2px;
+        }
+
       }
 
       .imgC {
         position: absolute;
         left: 0;
         top: 0;
+        @include screen($wide){
+          height: 30px;
+          bottom: -3px;
+          top: inherit;
+        }
+
       }
     }
   }
@@ -64,6 +100,19 @@
     margin-top: 100px;
     padding: 30px 180px;
     display: block;
+    @include screen($wide-l){
+      margin-top: 50px;
+    }
+    @include screen($wide){
+      padding: 15px 100px;
+      font-size: 24px;
+      &::before{
+        bottom: -10px;
+        height: 10px;
+      }
+    }
+
+
   }
 
 }

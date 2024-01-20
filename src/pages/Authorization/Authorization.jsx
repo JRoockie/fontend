@@ -2,13 +2,15 @@ import React, {useState} from "react";
 import "./Authorization.scss";
 import {Icons} from "../../source/icons/Icons";
 import {useCartContext} from "../../CartContext";
+import {useNavigate} from 'react-router-dom';
 
 function Authorization() {
-  const {setAuthorization, Data, firstFailed, setFirstFailed} = useCartContext();
+  const {setAuthorization, Data, firstFailed, setFirstFailed, HandleLogIn} = useCartContext();
   
   
   const [userNameVal, setUserNameVal] = useState("")
   const [userPassVal, setUserPassVal] = useState("")
+  const navigate = useNavigate()
   function OnKeyUpLogIn(event){
     setUserNameVal(event.target.value)
   }
@@ -20,12 +22,16 @@ function Authorization() {
     if (userNameVal === "" || userPassVal === ""){
       setFirstFailed(true)
     }else{
-      let userData = Data.accounts.find((user) => user.userName === userNameVal)
-      if (userData.password === userPassVal){
-        setAuthorization(false)
-      } else {
-        setFirstFailed(true)
-      }
+      // let userData = Data.accounts.find((user) => user.userName === userNameVal)
+      // if (userData.password === userPassVal){
+      //   setAuthorization(false)
+      //   navigate('/')
+      // } else {
+      //   setFirstFailed(true)
+      // }
+      navigate('/')
+      HandleLogIn(userNameVal, userPassVal)
+      
     }
     
     
