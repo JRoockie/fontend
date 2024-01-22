@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.8e4778ae.css",
-    "main.js": "/static/js/main.4e72ff17.js",
+    "main.js": "/static/js/main.4bea1821.js",
     "static/media/Сам элемент.png": "/static/media/Сам элемент.532b9e124b4d6a7f3ac7.png",
     "static/media/Raleway-ExtraLight.ttf": "/static/media/Raleway-ExtraLight.c02a81d7724fb7895dae.ttf",
     "static/media/Raleway-ExtraBold.ttf": "/static/media/Raleway-ExtraBold.cda3c9c91d02c73d1eb5.ttf",
@@ -41,10 +41,10 @@
     "static/media/Group 145.svg": "/static/media/Group 145.ed20917ce2f6d8aa7fcf61e005cd51fd.svg",
     "static/media/Rectangle 37.svg": "/static/media/Rectangle 37.548bddeb2927d26402899409e8e31e47.svg",
     "main.8e4778ae.css.map": "/static/css/main.8e4778ae.css.map",
-    "main.4e72ff17.js.map": "/static/js/main.4e72ff17.js.map"
+    "main.4bea1821.js.map": "/static/js/main.4bea1821.js.map"
   },
   "entrypoints": [
     "static/css/main.8e4778ae.css",
-    "static/js/main.4e72ff17.js"
+    "static/js/main.4bea1821.js"
   ]
 }
