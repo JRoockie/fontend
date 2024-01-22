@@ -1,7 +1,6 @@
 {
   "name": "devmode3",
   "version": "0.1.0",
-  "proxy": "http://localhost:8086",
   "homepage": "http://localhost:3000",
   "private": true,
   "dependencies": {
