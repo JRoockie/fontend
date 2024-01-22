@@ -9,7 +9,7 @@ function NewOrders (){
   const {main, setMain, newOrders, active, setActive, setSongsData, HandleDelete, HandleSetFin} = useCartContext()
   const navigate = useNavigate();
   const goBack = () => {
-    navigate(-1);
+    navigate("/");
   };
   
   // const {finOrders, setFinOrders} = useCartContext()
