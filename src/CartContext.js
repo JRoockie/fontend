@@ -36,7 +36,7 @@ export const CartProvider = ({children}) => {
       "password": password
     }
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('http://localhost:8086/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ export const CartProvider = ({children}) => {
   
       const fetchData1 = async (id) => {
         try {
-          const response = await fetch('/orders/fin', {
+          const response = await fetch('http://localhost:8086/orders/fin', {
             headers: {
               'Authorization': `Bearer ${cookies.token}`,
             }
@@ -114,7 +114,7 @@ export const CartProvider = ({children}) => {
   
       const fetchData = async (id) => {
         try {
-          const response = await fetch('/orders/new', {
+          const response = await fetch('http://localhost:8086/orders/new', {
             headers: {
               'Authorization': `Bearer ${cookies.token}`,
             }
@@ -160,7 +160,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('/deleteOrder', {
+      const response = await fetch('http://localhost:8086/deleteOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('/deleteOrder', {
+      const response = await fetch('http://localhost:8086/deleteOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -217,7 +217,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('/updateOrderClientTrue', {
+      const response = await fetch('http://localhost:8086/updateOrderClientTrue', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -244,7 +244,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('/updateOrderClientFalse', {
+      const response = await fetch('http://localhost:8086/updateOrderClientFalse', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -274,7 +274,7 @@ export const CartProvider = ({children}) => {
   
     const HandleDownloadVoice = async (activeId) => {
       try {
-        const response = await fetch(`/data/getVoice?id=${activeId}`, {
+        const response = await fetch(`http://localhost:8086/data/getVoice?id=${activeId}`, {
           headers: {
             'Authorization': `Bearer ${cookies.token}`
           }
@@ -299,7 +299,7 @@ export const CartProvider = ({children}) => {
   
   const HandleDownloadAudio = async (activeId) => {
     try {
-      const response = await fetch(`/data/getAudio?id=${activeId}`, {
+      const response = await fetch(`http://localhost:8086/data/getAudio?id=${activeId}`, {
         headers: {
           'Authorization': `Bearer ${cookies.token}`
         }
@@ -328,7 +328,7 @@ export const CartProvider = ({children}) => {
     
     
       try{
-        const response = await fetch('/orders/fin', {
+        const response = await fetch('http://localhost:8086/orders/fin', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${cookies.token}`,
