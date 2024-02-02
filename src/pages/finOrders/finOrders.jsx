@@ -8,7 +8,7 @@ function FinOrders (){
   const {main, setMain, finOrders,active1, setActive1, songsData, setSongsData, HandleDelete2, HandleSetNew} = useCartContext()
   const navigate = useNavigate();
   const goBack = () => {
-    navigate("/");
+    navigate(-1);
   };
   
   
@@ -65,9 +65,6 @@ function FinOrders (){
          <div style={{display: `${main ? "none" : "block"}`}} className="listBlock">
            {finOrders.map((ell, index)=>{
              let name = ell.nameAsClient ? ell.nameAsClient : "name"
-  
-  
-  
              if (ell.deletedWhen === null){
                return(
                   <div   key={index} onClick={()=>{

@@ -27,8 +27,6 @@ export const CartProvider = ({children}) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   
- 
-  
   async function HandleLogIn (login, password){
     
     let Fdata = {
@@ -55,20 +53,15 @@ export const CartProvider = ({children}) => {
         
         // await localStorage.setItem('token', JSON.stringify(data.token))
         await setCookie('token', data.token)
-        
-        
-      
+
       await console.log(data)
-      
-      
-      
+
     } catch (error) {
       console.error('Error:', error);
     }
     
   }
-  
-  
+
       const fetchData1 = async (id) => {
         try {
           const response = await fetch('http://localhost:8086/orders/fin', {
@@ -118,7 +111,7 @@ export const CartProvider = ({children}) => {
             headers: {
               'Authorization': `Bearer ${cookies.token}`,
             }
-          }); // Fetch from the proxy path
+          });
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }

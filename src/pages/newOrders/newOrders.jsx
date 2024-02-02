@@ -9,7 +9,7 @@ function NewOrders (){
   const {main, setMain, newOrders, active, setActive, setSongsData, HandleDelete, HandleSetFin} = useCartContext()
   const navigate = useNavigate();
   const goBack = () => {
-    navigate("/");
+    navigate(-1);
   };
   
   // const {finOrders, setFinOrders} = useCartContext()
@@ -64,7 +64,7 @@ function NewOrders (){
        </div>
      
        <div className="main">
-         <div className="listBlock">
+         <div style={{display: `${main ? "none" : "block"}`}} className="listBlock">
            {newOrders.map((ell, index)=>{
              
              
@@ -76,6 +76,7 @@ function NewOrders (){
                return (
                   <div key={index} onClick={() => {
                     OpenOrder(ell)
+                    HandleLink()
                   }} className={`LinkToOrder ${active.id === ell.id ? "active" : ""}`}>
                     <img src={Icons.whiteMark} alt=""/>
                     <p className="name">{name}</p>
@@ -91,7 +92,7 @@ function NewOrders (){
            
          </div>
        
-         <div className="source">
+         <div style={{display: `${mobileApp ? `${main ? "flex" : "none"}` : "flex"}`}} className="source">
            <div className="nameText block">
              <p className="name">{active.nameAsClient}</p>
              <p className="prg">{active.comment}</p>

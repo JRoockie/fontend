@@ -50,7 +50,7 @@ function Applications() {
         <Link className="logOutLink G-block" onClick={()=>{
           setAuthorization(true)
           setCookie('token', '')
-        }} to="/login">
+        }} to="/">
           Выйти из учётной записи
         </Link>
        
