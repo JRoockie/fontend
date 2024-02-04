@@ -34,7 +34,7 @@ export const CartProvider = ({children}) => {
       "password": password
     }
     try {
-      const response = await fetch('http://localhost:8086/login', {
+      const response = await fetch('https://records-bot.ru/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export const CartProvider = ({children}) => {
 
       const fetchData1 = async (id) => {
         try {
-          const response = await fetch('http://localhost:8086/orders/fin', {
+          const response = await fetch('https://records-bot.ru/orders/fin', {
             headers: {
               'Authorization': `Bearer ${cookies.token}`,
             }
@@ -107,7 +107,7 @@ export const CartProvider = ({children}) => {
   
       const fetchData = async (id) => {
         try {
-          const response = await fetch('http://localhost:8086/orders/new', {
+          const response = await fetch('https://records-bot.ru/orders/new', {
             headers: {
               'Authorization': `Bearer ${cookies.token}`,
             }
@@ -153,7 +153,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('http://localhost:8086/deleteOrder', {
+      const response = await fetch('https://records-bot.ru/deleteOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -182,7 +182,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('http://localhost:8086/deleteOrder', {
+      const response = await fetch('https://records-bot.ru/deleteOrder', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -210,7 +210,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('http://localhost:8086/updateOrderClientTrue', {
+      const response = await fetch('https://records-bot.ru/updateOrderClientTrue', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -237,7 +237,7 @@ export const CartProvider = ({children}) => {
       "id" : id
     }
     try {
-      const response = await fetch('http://localhost:8086/updateOrderClientFalse', {
+      const response = await fetch('https://records-bot.ru/updateOrderClientFalse', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -267,7 +267,7 @@ export const CartProvider = ({children}) => {
   
     const HandleDownloadVoice = async (activeId) => {
       try {
-        const response = await fetch(`http://localhost:8086/data/getVoice?id=${activeId}`, {
+        const response = await fetch(`https://records-bot.ru/data/getVoice?id=${activeId}`, {
           headers: {
             'Authorization': `Bearer ${cookies.token}`
           }
@@ -292,9 +292,10 @@ export const CartProvider = ({children}) => {
   
   const HandleDownloadAudio = async (activeId) => {
     try {
-      const response = await fetch(`http://localhost:8086/data/getAudio?id=${activeId}`, {
+      const response = await fetch(`https://records-bot.ru/data/getAudio?id=${activeId}`, {
         headers: {
-          'Authorization': `Bearer ${cookies.token}`
+          'Authorization': `Bearer ${cookies.token}`,
+          'Content-Type': 'application/json'
         }
       });
       if (!response.ok) {
@@ -321,7 +322,7 @@ export const CartProvider = ({children}) => {
     
     
       try{
-        const response = await fetch('http://localhost:8086/orders/fin', {
+        const response = await fetch('https://records-bot.ru/orders/fin', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${cookies.token}`,
