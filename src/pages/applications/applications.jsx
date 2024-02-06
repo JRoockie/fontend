@@ -6,21 +6,32 @@ import {useCartContext} from "../../CartContext";
 
 function Applications() {
   
-  const {main, setMain, newOrders, finOrders, setAuthorization, cookies, setCookie} = useCartContext()
+  const {main, setMain, newOrders, finOrders, setAuthorization, cookies, setCookie, setAvaFin, setAvaNew} = useCartContext()
   
   const [finLength, setFinLength] = useState(0)
   const [newLength, setNewLength] = useState(0)
   useEffect(()=>{
     finOrders.map((el)=>{
-      if (el.deletedWhen === null){
+        let x = 1
+        if (el.deletedWhen === null){
+            x=x+1
         setFinLength(prev => prev + 1)
+          setAvaFin(true)
       }
+
+
     })
+
+
     newOrders.map((el)=>{
+        let x = 1
       if (el.deletedWhen === null){
+          x= x+1
         setNewLength(prev => prev +1)
+          setAvaNew(true)
       }
     })
+
   }, [])
   
   return (
@@ -29,7 +40,7 @@ function Applications() {
        
          <Link onClick={()=>{
            setMain(false)
-         }} to="/finOrders" className="Embed G-flex-center G-alignItems-center G-flex-column">
+         }} to={`${finLength >=1 ? "/finOrders" : "/"}`} className="Embed G-flex-center G-alignItems-center G-flex-column">
            <div className="num">{finLength}</div>
            <p className="header">ОБРАБОТАННЫЕ</p>
            <p className="prg">ЗАЯВКИ</p>
@@ -40,7 +51,7 @@ function Applications() {
        
          <Link onClick={()=>{
            setMain(false)
-         }} to="/newOrders" className="Embed G-flex-center G-alignItems-center G-flex-column">
+         }} to={`${newLength >=1 ? "/newOrders" : "/"}`} className="Embed G-flex-center G-alignItems-center G-flex-column">
            <div className="num">{newLength}</div>
            <p className="header">НЕОБРАБОТАННЫЕ</p>
            <p className="prg">ЗАЯВКИ</p>

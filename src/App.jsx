@@ -1,5 +1,5 @@
 import "./App.scss";
-import React from "react";
+import React, {useEffect} from "react";
 import {Vectors} from "./source/backgroundVectors/vectors";
 import Authorization from "./pages/Authorization/Authorization";
 import {Route, Routes} from "react-router-dom";
@@ -15,8 +15,10 @@ function App() {
   const {
           authorization,
           setAuthorization,
-          Data
+          Data, avaFin, avaNew, setAvaFin, setAvaNew
         } = useCartContext();
+
+
   
   
   function Render (){
@@ -27,14 +29,15 @@ function App() {
          <Routes>
            <Route path="/" element={<Applications/>}/>
            <Route path="/login" element={<Authorization/>}/>
-           <Route path="/finOrders" element={<FinOrders/>}/>
-           <Route path="/newOrders" element={<NewOrders/>} />
+             <Route path="/finOrders" element={<FinOrders/>}/>
+             <Route path="/newOrders" element={<NewOrders/>} />
+
+
            <Route path="/songs" element={<Songs/>} />
          </Routes>
       )
     }
   }
-  
   
   return (
      <div className="App">

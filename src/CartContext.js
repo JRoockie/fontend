@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import { useCookies } from 'react-cookie';
 import {useNavigate} from "react-router-dom"
+
 import {request, setAuthHeader} from "./axios_helper";
 import {logDOM} from "@testing-library/react";
 
@@ -18,7 +19,9 @@ export const CartProvider = ({children}) => {
   const navigate = useNavigate();
   const [activeToken, setActiveToken] = useState("")
   const [cookies, setCookie] = useCookies(['token']);
-  
+  const [avaFin, setAvaFin] = useState(true)
+  const [avaNew, setAvaNew] = useState(false)
+
   const [dataOk, setDataOk] = useState(false)
   const goBack = (link) => {
     navigate(link);
@@ -81,7 +84,22 @@ export const CartProvider = ({children}) => {
          }
           await setFinOrders(result);
           await console.log(finOrders)
-  
+
+          let x = 1
+          await result.map((el)=>{
+            if (el.deletedWhen === null){
+              x = x +1
+               setAvaFin(true)
+            } else {
+              if(x > 1){
+                setAvaFin(true)
+              } else if(x===1){
+                setAvaFin(false)
+              }
+
+            }
+          })
+
           if (id === 0){
             let res = await result.find((el)=>{
               return el.deletedWhen === null
@@ -118,6 +136,22 @@ export const CartProvider = ({children}) => {
           const result = await response.json();
           await setNewOrders(result);
          await  console.log(result);
+
+          let x = 1
+          await result.map((el)=>{
+            if (el.deletedWhen === null){
+              x = x +1
+              setAvaNew(true)
+            } else {
+              if(x > 1){
+                setAvaNew(true)
+              } else if(x===1){
+                setAvaNew(false)
+              }
+
+            }
+          })
+
           if (id === 0){
             let res = await result.find((el)=>{
               return el.deletedWhen === null
@@ -224,9 +258,11 @@ export const CartProvider = ({children}) => {
       }
     
       const data = await response.json();
+
       await fetchData1(id)
       await fetchData(id)
-  
+      await fetchData()
+      await fetchData1()
     } catch (error) {
       console.error('Error:', error);
     }
@@ -251,9 +287,11 @@ export const CartProvider = ({children}) => {
       }
       
       const data = await response.json();
+
       await fetchData1(id)
       await fetchData(id)
-      
+      await fetchData()
+      await fetchData1()
     } catch (error) {
       console.error('Error:', error);
     }
@@ -381,7 +419,8 @@ export const CartProvider = ({children}) => {
     HandleDelete, HandleDelete2, HandleDownloadVoice, HandleDownloadAudio,
     HandleSetFin, HandleSetNew,
     main, setMain,
-    HandleLogIn, cookies, setCookie
+    HandleLogIn, cookies, setCookie,
+    avaFin, avaNew, setAvaNew, setAvaFin
   }}>
     {children}
   </CartContext.Provider> )

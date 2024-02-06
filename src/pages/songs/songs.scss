@@ -3,6 +3,7 @@
 .Songs{
   position: relative;
   z-index: 9999;
+  overflow: visible !important;
 
   max-height: 100vh;
   padding: 0 10px;

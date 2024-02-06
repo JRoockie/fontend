@@ -4,12 +4,13 @@ import {useCartContext} from "../../CartContext";
 import "../finOrders/finOrders.scss"
 import {Link, useNavigate} from "react-router-dom";
 import {render} from "react-dom";
+import {findAllByDisplayValue} from "@testing-library/react";
 
 function NewOrders (){
-  const {main, setMain, newOrders, active, setActive, setSongsData, HandleDelete, HandleSetFin} = useCartContext()
+  const {main, avaNew, setMain, newOrders, active, setActive, setSongsData, HandleDelete, HandleSetFin} = useCartContext()
   const navigate = useNavigate();
   const goBack = () => {
-    navigate(-1);
+    navigate("/");
   };
   
   // const {finOrders, setFinOrders} = useCartContext()
@@ -52,76 +53,88 @@ function NewOrders (){
   //   setTime(Time)
   // }, [active])
   
-  
-  return(
-     <div className="OrdersList G-container">
-       <div className="headerBlock G-flex-center G-alignItems-center">
-         <div onClick={goBack} className="backButton">
-           <img onClick={goBack} style={{display: `${mobileApp ? `${main ? "none" : "block"}` : "block"}`}} src={Icons.arrowLeft} alt=""/>
-           <img onClick={()=> setMain(false)} style={{display: `${mobileApp ? `${main ? "block" : "none"}` : "none"}`, position: "relative", zIndex: 9999}} src={Icons.arrowLeft} alt=""/>
-         </div>
-         <p className="header">НЕОБРАБОТАННЫЕ  <span>ЗАЯВКИ</span></p>
-       </div>
-     
-       <div className="main">
-         <div style={{display: `${main ? "none" : "block"}`}} className="listBlock">
-           {newOrders.map((ell, index)=>{
-             
-             
-             
-             
-             let name = ell.nameAsClient ? ell.nameAsClient : "name"
-             if (ell.deletedWhen === null) {
-  
-               return (
-                  <div key={index} onClick={() => {
-                    OpenOrder(ell)
-                    HandleLink()
-                  }} className={`LinkToOrder ${active.id === ell.id ? "active" : ""}`}>
-                    <img src={Icons.whiteMark} alt=""/>
-                    <p className="name">{name}</p>
-       
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                      <path d="M2 2L23.5 23.5M23.5 23.5V2M23.5 23.5H2" stroke="#DC1989" strokeWidth="3"
-                            strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-               )
-             }
-           })}
-           
-         </div>
-       
-         <div style={{display: `${mobileApp ? `${main ? "flex" : "none"}` : "flex"}`}} className="source">
-           <div className="nameText block">
-             <p className="name">{active.nameAsClient}</p>
-             <p className="prg">{active.comment}</p>
-           </div>
-         
-           <div className="data block"><span>Дата:</span>{active.date[0]}.{active.date[1]}.{active.date[2]}</div>
-           <div className="time block"><span>Время:</span>{active.date[3]}:{active.date[4]}</div>
-         
-           <div className="price block"><span>Цена:</span>{active.price}</div>
-           <Link to="/songs" onClick={SetSongs} className="songs G-block block"><span>Песни:</span>{active.songs.length}</Link>
-         
-           <div className="number block"><span>Номер:</span>{active.phoneNumber}</div>
-         
-           <div onClick={()=>{
-             HandleDelete(active.id)
-           }} className="delete G-block block">УДАЛИТЬ ЗАКАЗ</div>
-           <div onClick={()=>{
-             HandleSetFin(active.id)
-           }} className="submit">ЗАПИСАТЬ</div>
-       
-         </div>
-     
-       </div>
-   
-   
-   
-   
-     </div>
-  )
+  if(avaNew) {
+    return (
+        <div className="OrdersList G-container">
+          <div className="headerBlock G-flex-center G-alignItems-center">
+            <div onClick={goBack} className="backButton">
+              <img onClick={goBack} style={{display: `${mobileApp ? `${main ? "none" : "block"}` : "block"}`}}
+                   src={Icons.arrowLeft} alt=""/>
+              <img onClick={() => setMain(false)} style={{
+                display: `${mobileApp ? `${main ? "block" : "none"}` : "none"}`,
+                position: "relative",
+                zIndex: 9999
+              }} src={Icons.arrowLeft} alt=""/>
+            </div>
+            <p className="header">НЕОБРАБОТАННЫЕ <span>ЗАЯВКИ</span></p>
+          </div>
+
+          <div className="main">
+            <div style={{display: `${main ? "none" : "block"}`}} className="listBlock">
+              {newOrders.map((ell, index) => {
+
+
+                let name = ell.nameAsClient ? ell.nameAsClient : "name"
+                if (ell.deletedWhen === null) {
+
+                  return (
+                      <div key={index} onClick={() => {
+                        OpenOrder(ell)
+                        HandleLink()
+                      }} className={`LinkToOrder ${active.id === ell.id ? "active" : ""}`}>
+                        <img src={Icons.whiteMark} alt=""/>
+                        <p className="name">{name}</p>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                          <path d="M2 2L23.5 23.5M23.5 23.5V2M23.5 23.5H2" stroke="#DC1989" strokeWidth="3"
+                                strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                  )
+                }
+              })}
+
+            </div>
+
+            <div style={{display: `${mobileApp ? `${main ? "flex" : "none"}` : "flex"}`}} className="source">
+              <div className="nameText block">
+                <p className="name selectUser">{active.nameAsClient}</p>
+                <p className="prg selectUser">{active.comment}</p>
+              </div>
+
+              <div className="data block "><span>Дата:</span>{active.date[0]}.{active.date[1]}.{active.date[2]}</div>
+              <div className="time block"><span>Время:</span>{active.date[3]}:{active.date[4]}</div>
+
+              <div className="price block"><span>Цена:</span>{active.price}</div>
+              <Link to="/songs" onClick={SetSongs}
+                    className="songs G-block block"><span>Песни:</span>{active.songs.length}</Link>
+
+              <div className="number block selectUser"><span>Номер:</span>{active.phoneNumber}</div>
+
+              <div onClick={() => {
+                HandleDelete(active.id)
+              }} className="delete G-block block">УДАЛИТЬ ЗАКАЗ
+              </div>
+              <div onClick={() => {
+                HandleSetFin(active.id)
+              }} className="submit">ЗАПИСАТЬ
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+    )
+  } else {
+    return (
+        <div className="div2">
+          <img onClick={goBack}
+               src={Icons.arrowLeft} alt=""/>
+        </div>
+    )
+  }
 }
 
 export default NewOrders
