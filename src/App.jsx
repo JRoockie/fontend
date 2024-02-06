@@ -29,8 +29,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Applications/>}/>
                     <Route path="/login" element={<Authorization/>}/>
-                    {availableFinOrders ? <Route path="/finOrders" element={<FinOrders/>}/> : <Applications/>}
-                    {availableNewOrders ? <Route path="/newOrders" element={<NewOrders/>}/> : <Applications/>}
+                    <Route path="/finOrders" element={availableFinOrders ? <FinOrders/> : <Applications/>}/>
+                    <Route path="/newOrders" element={availableNewOrders ? <NewOrders/> : <Applications/>}/>
                     <Route path="/songs" element={<Songs/>}/>
                 </Routes>
             )

@@ -33,9 +33,7 @@ function Applications() {
                 setNewLength(prev => prev + 1)
             }
         })
-    }, [])
 
-    useEffect(() => {
         if (finLength >= 1) {
             setAvailableFinOrders(true)
         } else {
