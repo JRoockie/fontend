@@ -18,7 +18,8 @@ export const CartProvider = ({children}) => {
   const navigate = useNavigate();
   const [activeToken, setActiveToken] = useState("")
   const [cookies, setCookie] = useCookies(['token']);
-  
+  const [availableNewOrders, setAvailableNewOrders] = useState(false)
+  const [availableFinOrders, setAvailableFinOrders] = useState(false)
   const [dataOk, setDataOk] = useState(false)
   const goBack = (link) => {
     navigate(link);
@@ -382,7 +383,9 @@ export const CartProvider = ({children}) => {
     HandleDelete, HandleDelete2, HandleDownloadVoice, HandleDownloadAudio,
     HandleSetFin, HandleSetNew,
     main, setMain,
-    HandleLogIn, cookies, setCookie
+    HandleLogIn, cookies, setCookie,
+    availableNewOrders, setAvailableNewOrders,
+    availableFinOrders, setAvailableFinOrders
   }}>
     {children}
   </CartContext.Provider> )
