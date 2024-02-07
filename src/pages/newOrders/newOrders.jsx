@@ -3,13 +3,12 @@ import {Icons} from "../../source/icons/Icons";
 import {useCartContext} from "../../CartContext";
 import "../finOrders/finOrders.scss"
 import {Link, useNavigate} from "react-router-dom";
-import {render} from "react-dom";
 
 function NewOrders (){
-  const {main, setMain, newOrders, active, setActive, setSongsData, HandleDelete, HandleSetFin} = useCartContext()
+  const {main, avaNew, setMain, newOrders, active, setActive, setSongsData, HandleDelete, HandleSetFin} = useCartContext()
   const navigate = useNavigate();
   const goBack = () => {
-    navigate(-1);
+    navigate("/");
   };
   
   // const {finOrders, setFinOrders} = useCartContext()
