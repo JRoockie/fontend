@@ -18,8 +18,9 @@ export const CartProvider = ({children}) => {
   const navigate = useNavigate();
   const [activeToken, setActiveToken] = useState("")
   const [cookies, setCookie] = useCookies(['token']);
-  const [availableNewOrders, setAvailableNewOrders] = useState(false)
-  const [availableFinOrders, setAvailableFinOrders] = useState(false)
+  const [avaFin, setAvaFin] = useState(true)
+  const [avaNew, setAvaNew] = useState(false)
+
   const [dataOk, setDataOk] = useState(false)
   const goBack = (link) => {
     navigate(link);
@@ -34,7 +35,6 @@ export const CartProvider = ({children}) => {
       "login": login,
       "password": password
     }
-
     try {
       const response = await fetch('https://records-bot.ru/login', {
         method: 'POST',
@@ -83,7 +83,22 @@ export const CartProvider = ({children}) => {
          }
           await setFinOrders(result);
           await console.log(finOrders)
-  
+
+          let x = 1
+          await result.map((el)=>{
+            if (el.deletedWhen === null){
+              x = x +1
+               setAvaFin(true)
+            } else {
+              if(x > 1){
+                setAvaFin(true)
+              } else if(x===1){
+                setAvaFin(false)
+              }
+
+            }
+          })
+
           if (id === 0){
             let res = await result.find((el)=>{
               return el.deletedWhen === null
@@ -120,6 +135,22 @@ export const CartProvider = ({children}) => {
           const result = await response.json();
           await setNewOrders(result);
          await  console.log(result);
+
+          let x = 1
+          await result.map((el)=>{
+            if (el.deletedWhen === null){
+              x = x +1
+              setAvaNew(true)
+            } else {
+              if(x > 1){
+                setAvaNew(true)
+              } else if(x===1){
+                setAvaNew(false)
+              }
+
+            }
+          })
+
           if (id === 0){
             let res = await result.find((el)=>{
               return el.deletedWhen === null
@@ -226,9 +257,11 @@ export const CartProvider = ({children}) => {
       }
     
       const data = await response.json();
+
       await fetchData1(id)
       await fetchData(id)
-  
+      await fetchData()
+      await fetchData1()
     } catch (error) {
       console.error('Error:', error);
     }
@@ -253,9 +286,11 @@ export const CartProvider = ({children}) => {
       }
       
       const data = await response.json();
+
       await fetchData1(id)
       await fetchData(id)
-      
+      await fetchData()
+      await fetchData1()
     } catch (error) {
       console.error('Error:', error);
     }
@@ -384,8 +419,7 @@ export const CartProvider = ({children}) => {
     HandleSetFin, HandleSetNew,
     main, setMain,
     HandleLogIn, cookies, setCookie,
-    availableNewOrders, setAvailableNewOrders,
-    availableFinOrders, setAvailableFinOrders
+    avaFin, avaNew, setAvaNew, setAvaFin
   }}>
     {children}
   </CartContext.Provider> )

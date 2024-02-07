@@ -55,9 +55,9 @@ function Songs (){
        <div className="Main G-flex-between">
          
          <div className="songInfoBlock">
-            <div className="name block"><span>Название:</span>{activeSong.songName}</div>
-            <div className="singer block"><span>Кто поёт:</span>{activeSong.whoWillSing}</div>
-           <a href={`${activeSong.link.startsWith("https://") ? activeSong.link : `https://${activeSong.link}`}`} target="blank" className="linkYoutube  block G-block"><span>Ютуб:</span>{activeSong.link}</a>
+            <div className="name block selectUser"><span>Название:</span>{activeSong.songName}</div>
+            <div className="singer block "><span>Кто поёт:</span>{activeSong.whoWillSing}</div>
+           <a href={`${activeSong.link.startsWith("https://") ? activeSong.link : `https://${activeSong.link}`}`} target="blank" className="linkYoutube selectUser block G-block"><span>Ютуб:</span>{activeSong.link}</a>
          </div>
          
          <div className="buttonsBlock">

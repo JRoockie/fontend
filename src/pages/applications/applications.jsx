@@ -6,79 +6,67 @@ import {useCartContext} from "../../CartContext";
 
 function Applications() {
 
-    const {
-        main,
-        setMain,
-        newOrders,
-        finOrders,
-        setAuthorization,
-        cookies,
-        setCookie,
-        availableNewOrders,
-        setAvailableNewOrders,
-        availableFinOrders,
-        setAvailableFinOrders
-    } = useCartContext()
+  const {main, setMain, newOrders, finOrders, setAuthorization, cookies, setCookie, setAvaFin, setAvaNew} = useCartContext()
 
-    const [finLength, setFinLength] = useState(0)
-    const [newLength, setNewLength] = useState(0)
-    useEffect(() => {
-        finOrders.map((el) => {
-            if (el.deletedWhen === null) {
-                setFinLength(prev => prev + 1)
-            }
-        })
-        newOrders.map((el) => {
-            if (el.deletedWhen === null) {
-                setNewLength(prev => prev + 1)
-            }
-        })
-
-        if (finLength >= 1) {
-            setAvailableFinOrders(true)
-        } else {
-            setAvailableFinOrders(false)
-        }
-
-        if (newLength >= 1) {
-            setAvailableNewOrders(true)
-        } else {
-            setAvailableNewOrders(false)
-        }
-    }, [])
-
-    return (
-        <div className="applications G-flex-wrap">
+  const [finLength, setFinLength] = useState(0)
+  const [newLength, setNewLength] = useState(0)
+  useEffect(()=>{
+    finOrders.map((el)=>{
+        let x = 1
+        if (el.deletedWhen === null){
+            x=x+1
+        setFinLength(prev => prev + 1)
+          setAvaFin(true)
+      }
 
 
-            <Link onClick={() => {
-                setMain(false)
-            }} to={`${finLength >=1 ? "/finOrders" : "/"}`} className="Embed G-flex-center G-alignItems-center G-flex-column">
-                <div className="num">{finLength}</div>
-                <p className="header">ОБРАБОТАННЫЕ</p>
-                <p className="prg">ЗАЯВКИ</p>
-                <img src={Embed} alt=""/>
-            </Link>
+    })
 
 
-            <Link onClick={() => {
-                setMain(false)
-            }} to={`${newLength >=1 ? "/newOrders" : "/"}`} className="Embed G-flex-center G-alignItems-center G-flex-column">
-                <div className="num">{newLength}</div>
-                <p className="header">НЕОБРАБОТАННЫЕ</p>
-                <p className="prg">ЗАЯВКИ</p>
-                <img src={Embed} alt=""/>
-            </Link>
+    newOrders.map((el)=>{
+        let x = 1
+      if (el.deletedWhen === null){
+          x= x+1
+        setNewLength(prev => prev +1)
+          setAvaNew(true)
+      }
+    })
 
-            <Link className="logOutLink G-block" onClick={() => {
-                setAuthorization(true)
-                setCookie('token', '')
-            }} to="/">
-                Выйти из учётной записи
-            </Link>
+  }, [])
 
-        </div>
-    );
+  return (
+     <div className="applications G-flex-wrap">
+
+
+         <Link onClick={()=>{
+           setMain(false)
+         }} to={`${finLength >=1 ? "/finOrders" : "/"}`} className="Embed G-flex-center G-alignItems-center G-flex-column">
+           <div className="num">{finLength}</div>
+           <p className="header">ОБРАБОТАННЫЕ</p>
+           <p className="prg">ЗАЯВКИ</p>
+           <img src={Embed} alt=""/>
+         </Link>
+
+
+
+         <Link onClick={()=>{
+           setMain(false)
+         }} to={`${newLength >=1 ? "/newOrders" : "/"}`} className="Embed G-flex-center G-alignItems-center G-flex-column">
+           <div className="num">{newLength}</div>
+           <p className="header">НЕОБРАБОТАННЫЕ</p>
+           <p className="prg">ЗАЯВКИ</p>
+           <img src={Embed} alt=""/>
+         </Link>
+
+        <Link className="logOutLink G-block" onClick={()=>{
+          setAuthorization(true)
+          setCookie('token', '')
+        }} to="/">
+          Выйти из учётной записи
+        </Link>
+
+     </div>
+  );
 }
 
 export default Applications;
