@@ -3,6 +3,8 @@ import {Icons} from "../../source/icons/Icons";
 import {useCartContext} from "../../CartContext";
 import "../finOrders/finOrders.scss"
 import {Link, useNavigate} from "react-router-dom";
+import {render} from "react-dom";
+import {findAllByDisplayValue} from "@testing-library/react";
 
 function NewOrders (){
   const {main, avaNew, setMain, newOrders, active, setActive, setSongsData, HandleDelete, HandleSetFin} = useCartContext()
